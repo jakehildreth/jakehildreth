@@ -7,7 +7,7 @@
     - [PowerPUG!](https://github.com/jakehildreth/PowerPUG): A tiny tool built to help AD Admins tame the Protected Users group.
   - developing:
     - [PSCertutil](https://github.com/jakehildreth/PSCertutil): A PowerShell wrapper for certutil.exe.
-    - [Build-LocksmithLab](https://github.com/jakehildreth/ADCSGoat): A Deliberately Vulnerable Active Directory Certificate Services Lab.
+    - [ADCSGoat](https://github.com/jakehildreth/ADCSGoat): A Deliberately Vulnerable Active Directory Certificate Services Lab.
   - planning:
     - [ESCalator](https://github.com/jakehildreth/ESCalator): A tiny tool for identifying and abusing AD CS issue combinations that may not be readily obvious.
     - [Locksmith2](https://github.com/jakehildreth/Locksmith2): An AD CS toolkit for AD Admins, Defensive Security Professionals, and Filthy Red Teamers.
