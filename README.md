@@ -6,10 +6,11 @@
     - [BlueTuxedo](https://github.com/jakehildreth/BlueTuxedo): A tiny tool built to find and fix common misconfigurations in Active Directory-integrated DNS.
     - [PowerPUG!](https://github.com/jakehildreth/PowerPUG): A tiny tool built to help AD Admins tame the Protected Users group.
   - developing:
+    - [Stairs](https://github.com/jakehildreth/Stairs): A tiny tool for *identifying* AD CS issue combinations that may not be readily obvious that could result in forest compromise.
+    - [ESCalator](https://github.com/jakehildreth/ESCalator): A tiny tool for *identifying and **abusing*** AD CS issue combinations that may not be readily obvious.
     - [PSCertutil](https://github.com/jakehildreth/PSCertutil): A PowerShell wrapper for certutil.exe.
     - [ADCSGoat](https://github.com/jakehildreth/ADCSGoat): A Deliberately Vulnerable Active Directory Certificate Services Lab.
   - planning:
-    - [ESCalator](https://github.com/jakehildreth/ESCalator): A tiny tool for identifying and abusing AD CS issue combinations that may not be readily obvious.
     - [Locksmith2](https://github.com/jakehildreth/Locksmith2): An AD CS toolkit for AD Admins, Defensive Security Professionals, and Filthy Red Teamers.
   - A Microsoft MVP?
 - 🌱 I’m always learning AD/AD CS security but mostly learning how to develop PowerShell.
