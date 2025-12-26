@@ -30,7 +30,7 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - **CISSP** (Certified Information Systems Security Professional) - Expires Jan 31, 2028
 - **CompTIA Security+ ce** - Expires May 28, 2027
 - **CompTIA A+** - Issued Feb 21, 2003 (foundation cert from early career)
-- **Microsoft MVP** - Renewed 2025
+- **Microsoft MVP** - Issued in 2025
 
 ## Open Source Projects
 
@@ -73,6 +73,7 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 
 ### Code Style
 - Follow instructions files provided in the project's .github/instructions folder/
+- **No emojis** in code. Prefer simple visual indicators like [x], [+], [!], [i], [?], [>]
 
 ### Documentation Standards
 - **No emojis** in documentation
@@ -82,6 +83,9 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - READMEs should focus on: installation, quick start, examples
 
 ### PowerShell Specific
+- Follow awesome-copilot PowerShell instructions: https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
+- Follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
+- When there is a conflict between guidance documents, prefer project-level instructions first.
 - Follows Microsoft PowerShell best practices
 - Uses approved verbs (Get-Verb compliance)
 - Comment-based help for all functions
@@ -120,21 +124,22 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 
 ## Speaking & Education
 
-### Upcoming Conferences (as of Oct 2025)
-- **Queen City Con** (Nov 7, 2025) - "Making $ with COMPUTER$"
-- **Anti-Cast Training** (Nov 12, 2025) - "PKI Foundations for Security Pros"
+### Upcoming Conferences (as of Dec 26, 2025)
 - **CodeMash** (Jan 13-16, 2025) - "PKI Unlocked: A No-Math Primer for Builders"
 
 ### Recent Presentations
+- **Anti-Cast Training** (Nov 12, 2025) - "PKI Foundations for Security Pros"
+- **Queen City Con** (Nov 7, 2025) - "Making $ with COMPUTER$"
 - **HIPConf** (Oct 7-9, 2025) - "End the ESCape Clause!" (ESCalator research)
 - **PancakesCon 6** (Sep 21, 2025) - "PKI and Powerlifting!"
 - **Blue Team Con** (Sep 6-7, 2025) - Red tenant model with Eric Woodruff
 
 ### Teaching Style
-- "No-math" approach to complex topics
 - Progressive concept building
 - Practical, hands-on demonstrations
 - Makes PKI and AD CS accessible to non-experts
+- "No-math" approach to PKI
+- Focuses on the AD in AD CS.
 
 ## Blog & Writing
 
@@ -193,10 +198,10 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 ## When Assisting Jake
 
 1. **Use CalVer** not SemVer for versioning
-2. **No emojis** in documentation
+2. **No emojis**
 3. **OTBS style** for braces
 5. **Keep documentation concise** and practical
-6. **Assume cross-platform** needs (Windows/Linux/macOS)
+6. **Assume cross-platform** needs (Windows/Linux/macOS, Desktop/Core)
 7. **Follow PowerShell best practices** per Microsoft guidelines
 8. **Conventional commits** for git messages
 9. **Focus on security** and identity-related solutions
