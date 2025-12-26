@@ -83,6 +83,8 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - READMEs should focus on: installation, quick start, examples
 
 ### PowerShell Specific
+
+#### General Standards
 - Follow awesome-copilot PowerShell instructions: https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
 - Follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
 - When there is a conflict between guidance documents, prefer project-level instructions first.
@@ -91,7 +93,65 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - Comment-based help for all functions
 - Cross-platform compatibility (Windows, Linux, macOS)
 - PowerShell 5.1+ support first, PowerShell Core support next
-- Return well-known .NET objects preferred, PSCustomObjects next, Hashtables and other primitives last
+
+#### Naming and Style
+- **Function Names:** Verb-Noun format using approved verbs, PascalCase, singular nouns
+- **Parameters:** PascalCase, descriptive names, singular form unless always multiple
+- **Variables:** PascalCase for public, camelCase for private, meaningful names
+- **No Aliases:** Use full cmdlet names in scripts (Get-ChildItem not gci, Where-Object not ?, ForEach-Object not %)
+
+#### Code Formatting
+- **OTBS (One True Brace Style):** Opening braces on same line, closing braces on new line
+- **Indentation:** 4 spaces (not tabs)
+- **Line Breaks:** After pipeline operators for readability
+- **Splatting:** Use splatting for multiple parameters instead of backticks
+- **Backticks:** Avoid for line continuation; prefer splatting or natural break points
+- **Quotes:** Single quotes for literals, double quotes when variables need expansion
+- **Operators:** Spaces around operators (=, -eq, -ne, etc.)
+
+#### Parameter Design
+- **Standard Names:** Use common parameter names (Path, Name, Force, Confirm, WhatIf)
+- **Validation:** ValidateNotNullOrEmpty, ValidateSet (enables tab completion), ValidateScript for complex validation
+- **Switch Parameters:** Use [switch] for boolean flags (default to $false)
+- **Pipeline Support:** 
+  - Use ValueFromPipeline for direct object input
+  - Use ValueFromPipelineByPropertyName for property mapping
+  - Implement Begin/Process/End blocks for pipeline handling
+  - Process one object at a time in process block (streaming, not collecting)
+
+#### Output Patterns
+- **Return Objects Not Text:** Return well-known .NET objects preferred, PSCustomObjects next, Hashtables and primitives last
+- **No Write-Host for Data:** Only use Write-Host for UI elements, not data output
+- **PassThru Pattern:** Default to no output for action cmdlets; implement -PassThru switch to return modified/created objects
+- **Pipeline Streaming:** Output one object at a time; avoid collecting large arrays
+
+#### Error Handling
+- **Advanced Functions:** In functions with [CmdletBinding()]:
+  - Prefer `$PSCmdlet.WriteError()` over `Write-Error`
+  - Prefer `$PSCmdlet.ThrowTerminatingError()` over `throw`
+  - Construct proper ErrorRecord objects with category, target, and exception details
+- **Try/Catch:** Use try/catch blocks for error management
+- **ShouldProcess:** 
+  - Use `[CmdletBinding(SupportsShouldProcess = $true)]` for system-changing operations
+  - Set ConfirmImpact appropriately (Low/Medium/High)
+  - Call `$PSCmdlet.ShouldProcess()` before making changes
+  - Use ShouldContinue() for additional confirmations when needed
+
+#### Message Streams
+- **Write-Verbose:** Operational details (available with -Verbose)
+- **Write-Warning:** Warning conditions
+- **Write-Error:** Non-terminating errors
+- **throw:** Terminating errors (or $PSCmdlet.ThrowTerminatingError in advanced functions)
+- **Write-Host:** Only for user interface text, never for data
+
+#### Comment-Based Help
+Include for all public functions:
+- `.SYNOPSIS` - Brief description
+- `.DESCRIPTION` - Detailed explanation
+- `.PARAMETER` - Each parameter described
+- `.EXAMPLE` - Practical usage examples (multiple examples preferred)
+- `.OUTPUTS` - Type of output returned
+- `.NOTES` - Additional information
 
 ### Git Workflow
 - Uses conventional commits (e.g., `chore:`, `docs:`, `feat:`, `fix:`)
@@ -197,15 +257,14 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 
 ## When Assisting Jake
 
-1. **Use CalVer** not SemVer for versioning
-2. **No emojis**
-3. **OTBS style** for braces
-5. **Keep documentation concise** and practical
-6. **Assume cross-platform** needs (Windows/Linux/macOS, Desktop/Core)
-7. **Follow PowerShell best practices** per Microsoft guidelines
-8. **Conventional commits** for git messages
-9. **Focus on security** and identity-related solutions
-10. **Value simplicity** and maintainability
+1. **Use CalVer** not SemVer for versioning (YYYY.MM.DD format)
+2. **No emojis** in code or documentation
+3. **Follow PowerShell Specific section** for code formatting, naming, and patterns
+4. **Keep documentation concise** and practical
+5. **Assume cross-platform** needs (Windows/Linux/macOS, Desktop/Core)
+6. **Conventional commits** for git messages (chore, docs, feat, fix)
+7. **Focus on security** and identity-related solutions
+8. **Value simplicity** and maintainability
 
 ---
 
