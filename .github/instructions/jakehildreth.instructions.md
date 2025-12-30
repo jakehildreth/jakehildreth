@@ -88,6 +88,7 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - Follow awesome-copilot PowerShell instructions: https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
 - Follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
 - When there is a conflict between guidance documents, prefer project-level instructions first.
+- Tend toward verbose and descriptive variable names
 - Follows Microsoft PowerShell best practices
 - Uses approved verbs (Get-Verb compliance)
 - Comment-based help for all functions
