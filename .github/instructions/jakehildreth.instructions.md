@@ -102,7 +102,11 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 - **No Aliases:** Use full cmdlet names in scripts (Get-ChildItem not gci, Where-Object not ?, ForEach-Object not %)
 
 #### Code Formatting
-- **OTBS (One True Brace Style):** Opening braces on same line, closing braces on new line
+- **OTBS (One True Brace Style):**
+  - Opening braces on same line as statement: `if ($condition) {`, `function Test-Thing {`
+  - Closing braces on new line
+  - `else`, `elseif`, `catch`, and `finally` keywords must be on same line as closing brace: `} else {`, `} elseif {`, `} catch {`, `} finally {`
+  - Never put these keywords on their own line after a closing brace
 - **Indentation:** 4 spaces (not tabs)
 - **Line Breaks:** After pipeline operators for readability
 - **Splatting:** Use splatting for multiple parameters instead of backticks
