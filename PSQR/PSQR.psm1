@@ -154,7 +154,9 @@ function Get-QRMatrix {
     Write-Verbose "Data length: $dataLength bytes, Error correction: $ErrorCorrection"
     
     # QR code version capacity lookup table (bytes)
-    # Format: @{ Version = Size; Capacity_L, Capacity_M, Capacity_Q, Capacity_H }
+    # Format: @{ VersionNumber = @{ Size = MatrixSize; L = Capacity; M = Capacity; Q = Capacity; H = Capacity } }
+    # Note: ErrorCorrectionLevel parameter is used only for version selection (capacity planning)
+    # This implementation does not include actual Reed-Solomon error correction encoding
     $versionCapacity = @{
         1 = @{ Size = 21; L = 17; M = 14; Q = 11; H = 7 }
         2 = @{ Size = 25; L = 32; M = 26; Q = 20; H = 14 }
@@ -164,8 +166,8 @@ function Get-QRMatrix {
     }
     
     # Select appropriate version based on data length and error correction level
-    $version = 1
-    $size = 21
+    $version = $null
+    $size = 0
     
     foreach ($ver in 1..5) {
         $capacity = $versionCapacity[$ver][$ErrorCorrection]
@@ -174,6 +176,20 @@ function Get-QRMatrix {
             $size = $versionCapacity[$ver].Size
             break
         }
+    }
+    
+    # Check if data is too long for supported versions
+    if ($null -eq $version) {
+        $maxCapacity = $versionCapacity[5][$ErrorCorrection]
+        $errorMessage = "Data length ($dataLength bytes) exceeds maximum capacity ($maxCapacity bytes) for version 5 with error correction level $ErrorCorrection"
+        $exception = [System.ArgumentException]::new($errorMessage, 'InputText')
+        $errorRecord = [System.Management.Automation.ErrorRecord]::new(
+            $exception,
+            'DataTooLong',
+            [System.Management.Automation.ErrorCategory]::InvalidArgument,
+            $InputText
+        )
+        $PSCmdlet.ThrowTerminatingError($errorRecord)
     }
     
     Write-Verbose "Using QR version $version (${size}x${size}) with capacity of $($versionCapacity[$version][$ErrorCorrection]) bytes"
@@ -198,7 +214,10 @@ function Get-QRMatrix {
     # Encode data (simplified encoding)
     # Note: This is a basic QR code implementation that directly encodes UTF-8 bytes
     # without formal QR code format indicators, mode indicators, or Reed-Solomon
-    # error correction codes. For production use, consider a full QR code library.
+    # error correction encoding. The ErrorCorrectionLevel parameter is used only
+    # for version selection (determining matrix size) and does not add actual
+    # error correction data. For production use with full error correction, 
+    # consider using a complete QR code library.
     # dataBytes already calculated above for version selection
     $dataIndex = 0
     
