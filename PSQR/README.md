@@ -4,7 +4,32 @@ A simple PowerShell module for generating QR codes in the terminal.
 
 ## Installation
 
-### From Source
+### Prerequisites
+
+PSQR requires the `qrencode` utility to be installed on your system:
+
+**Ubuntu/Debian:**
+```bash
+sudo apt-get install qrencode
+```
+
+**macOS:**
+```bash
+brew install qrencode
+```
+
+**Windows:**
+```powershell
+# Using Chocolatey
+choco install qrencode
+
+# Or using Scoop
+scoop install qrencode
+```
+
+### Module Installation
+
+#### From Source
 
 1. Clone or download this repository
 2. Import the module:
@@ -13,7 +38,7 @@ A simple PowerShell module for generating QR codes in the terminal.
 Import-Module ./PSQR/PSQR.psd1
 ```
 
-### Manual Installation
+#### Manual Installation
 
 Copy the PSQR folder to one of your PowerShell module paths:
 
@@ -48,12 +73,6 @@ Use pipeline input:
 "Important message" | New-PSQR
 ```
 
-Specify error correction level:
-
-```powershell
-New-PSQR -Text "Critical data" -ErrorCorrectionLevel H
-```
-
 ## Usage
 
 ### New-PSQR
@@ -66,18 +85,11 @@ Generates a QR code from a string and displays it in the terminal.
   - Accepts pipeline input
   - Position 0
 
-- **ErrorCorrectionLevel** (Optional): The error correction level
-  - Valid values: L (Low), M (Medium), Q (Quartile), H (High)
-  - Default: M (Medium)
-
 #### Examples
 
 ```powershell
 # Basic usage
 New-PSQR -Text "https://github.com/jakehildreth"
-
-# With high error correction
-New-PSQR -Text "Important data" -ErrorCorrectionLevel H
 
 # From pipeline
 "Scan me!" | New-PSQR
@@ -86,25 +98,15 @@ New-PSQR -Text "Important data" -ErrorCorrectionLevel H
 New-PSQR -Text "Debug this" -Verbose
 ```
 
-## Error Correction Levels
-
-- **L (Low)**: ~7% error correction
-- **M (Medium)**: ~15% error correction (default)
-- **Q (Quartile)**: ~25% error correction
-- **H (High)**: ~30% error correction
-
-Higher error correction levels make the QR code more resilient to damage but may require larger QR codes for the same data.
-
 ## Requirements
 
 - PowerShell 5.1 or higher
+- qrencode utility (see Prerequisites above)
 - Cross-platform compatible (Windows, Linux, macOS)
 
 ## Notes
 
-This module implements a basic QR code generation algorithm suitable for simple text encoding. The QR codes are displayed using Unicode block characters directly in the terminal.
-
-**Important:** The generated QR codes may not be scannable by all readers due to missing standard QR format components (format information, version information, etc.). For production use with guaranteed scannability, consider using a dedicated QR code library with full format support.
+This module uses the industry-standard `qrencode` utility to generate proper QR codes that are scannable by all standard QR code readers. The QR codes are displayed using Unicode block characters directly in the terminal.
 
 ## License
 
