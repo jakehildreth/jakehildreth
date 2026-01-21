@@ -146,20 +146,25 @@ function Get-QRMatrix {
 
     Write-Verbose "Generating QR matrix for: $InputText"
 
-    # Determine QR code version based on input length
-    # Version 1 can hold up to 25 alphanumeric characters with M error correction
-    $dataLength = $InputText.Length
+    # Determine QR code version based on byte count
+    # Using UTF-8 encoding to get accurate byte count for capacity calculations
+    $dataBytes = [System.Text.Encoding]::UTF8.GetBytes($InputText)
+    $dataLength = $dataBytes.Length
     
-    if ($dataLength -le 25) {
+    Write-Verbose "Data length: $dataLength bytes, Error correction: $ErrorCorrection"
+    
+    # Version selection based on byte capacity with error correction
+    # Capacities are approximate and vary by error correction level
+    if ($dataLength -le 20) {
         $version = 1
         $size = 21
-    } elseif ($dataLength -le 47) {
+    } elseif ($dataLength -le 40) {
         $version = 2
         $size = 25
-    } elseif ($dataLength -le 77) {
+    } elseif ($dataLength -le 65) {
         $version = 3
         $size = 29
-    } elseif ($dataLength -le 114) {
+    } elseif ($dataLength -le 95) {
         $version = 4
         $size = 33
     } else {
@@ -187,7 +192,7 @@ function Get-QRMatrix {
     }
 
     # Encode data (simplified encoding - creates a pattern based on text)
-    $dataBytes = [System.Text.Encoding]::UTF8.GetBytes($InputText)
+    # dataBytes already calculated above for version selection
     $dataIndex = 0
     
     # Fill in data in a zigzag pattern (simplified)
