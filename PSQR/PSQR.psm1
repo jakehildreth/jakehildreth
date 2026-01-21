@@ -33,7 +33,9 @@ function New-PSQR {
 
     .NOTES
     This function uses a basic QR code implementation suitable for simple text encoding.
-    For complex data or production use, consider using a dedicated QR code library.
+    The generated QR codes may not be scannable by all readers due to missing standard
+    QR format components. For production use with guaranteed scannability, consider
+    using a dedicated QR code library with full format support.
     #>
     [CmdletBinding()]
     param(
@@ -212,12 +214,14 @@ function Get-QRMatrix {
     }
 
     # Encode data (simplified encoding)
-    # Note: This is a basic QR code implementation that directly encodes UTF-8 bytes
+    # WARNING: The generated QR codes may not be scannable by all readers due to missing
+    # standard QR format components (format information, version information, etc.)
+    # This is a basic QR code implementation that directly encodes UTF-8 bytes
     # without formal QR code format indicators, mode indicators, or Reed-Solomon
     # error correction encoding. The ErrorCorrectionLevel parameter is used only
     # for version selection (determining matrix size) and does not add actual
-    # error correction data. For production use with full error correction, 
-    # consider using a complete QR code library.
+    # error correction data. For production use with full error correction and
+    # guaranteed scannability, consider using a complete QR code library.
     # dataBytes already calculated above for version selection
     $dataIndex = 0
     

@@ -104,6 +104,8 @@ Higher error correction levels make the QR code more resilient to damage but may
 
 This module implements a basic QR code generation algorithm suitable for simple text encoding. The QR codes are displayed using Unicode block characters directly in the terminal.
 
+**Important:** The generated QR codes may not be scannable by all readers due to missing standard QR format components (format information, version information, etc.). For production use with guaranteed scannability, consider using a dedicated QR code library with full format support.
+
 ## License
 
 Copyright (c) 2026 Jake Hildreth. All rights reserved.
