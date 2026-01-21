@@ -45,13 +45,17 @@ function New-PSQR {
     begin {
         Write-Verbose "Starting QR code generation"
         
+        # Installation instructions (single source of truth)
+        $script:InstallInstructions = @"
+Ubuntu/Debian: sudo apt-get install qrencode
+macOS: brew install qrencode
+Windows: choco install qrencode or scoop install qrencode
+"@
+        
         # Check if qrencode is available
         $qrencodeCommand = Get-Command 'qrencode' -ErrorAction SilentlyContinue
         if (-not $qrencodeCommand) {
-            $errorMessage = "qrencode utility not found. Please install it first:`n" +
-                           "  Ubuntu/Debian: sudo apt-get install qrencode`n" +
-                           "  macOS: brew install qrencode`n" +
-                           "  Windows: choco install qrencode or scoop install qrencode"
+            $errorMessage = "qrencode utility not found. Please install it first:`n$script:InstallInstructions"
             $exception = [System.Management.Automation.ItemNotFoundException]::new($errorMessage)
             $errorRecord = [System.Management.Automation.ErrorRecord]::new(
                 $exception,
@@ -72,14 +76,20 @@ function New-PSQR {
             
             try {
                 # Use qrencode to generate the QR code in ANSI UTF-8 format for terminal display
-                # -t ANSIUTF8: Output format suitable for terminal display
-                # -m 2: Add a 2-module margin (quiet zone)
-                # -l M: Error correction level Medium
-                # -o: Output to file
-                $null = & qrencode -t ANSIUTF8 -m 2 -l M -o $tempFile $Text 2>&1
+                # Build arguments array for safe parameter passing (prevents injection)
+                $qrencodeArgs = @(
+                    '-t', 'ANSIUTF8'  # Output format suitable for terminal display
+                    '-m', '2'         # Add a 2-module margin (quiet zone)
+                    '-l', 'M'         # Error correction level Medium
+                    '-o', $tempFile   # Output to file
+                    $Text             # Text to encode (passed as separate argument for safety)
+                )
+                
+                $output = & qrencode $qrencodeArgs 2>&1
                 
                 if ($LASTEXITCODE -ne 0) {
-                    throw "qrencode failed with exit code $LASTEXITCODE"
+                    $errorDetails = if ($output) { ": $output" } else { '' }
+                    throw "qrencode command failed with exit code $LASTEXITCODE$errorDetails. This may indicate invalid input or a problem with the qrencode utility."
                 }
                 
                 # Read and display the QR code
