@@ -153,26 +153,30 @@ function Get-QRMatrix {
     
     Write-Verbose "Data length: $dataLength bytes, Error correction: $ErrorCorrection"
     
-    # Version selection based on byte capacity with error correction
-    # Capacities are approximate and vary by error correction level
-    if ($dataLength -le 20) {
-        $version = 1
-        $size = 21
-    } elseif ($dataLength -le 40) {
-        $version = 2
-        $size = 25
-    } elseif ($dataLength -le 65) {
-        $version = 3
-        $size = 29
-    } elseif ($dataLength -le 95) {
-        $version = 4
-        $size = 33
-    } else {
-        $version = 5
-        $size = 37
+    # QR code version capacity lookup table (bytes)
+    # Format: @{ Version = Size; Capacity_L, Capacity_M, Capacity_Q, Capacity_H }
+    $versionCapacity = @{
+        1 = @{ Size = 21; L = 17; M = 14; Q = 11; H = 7 }
+        2 = @{ Size = 25; L = 32; M = 26; Q = 20; H = 14 }
+        3 = @{ Size = 29; L = 53; M = 42; Q = 32; H = 24 }
+        4 = @{ Size = 33; L = 78; M = 62; Q = 46; H = 34 }
+        5 = @{ Size = 37; L = 106; M = 84; Q = 60; H = 44 }
     }
-
-    Write-Verbose "Using QR version $version (${size}x${size})"
+    
+    # Select appropriate version based on data length and error correction level
+    $version = 1
+    $size = 21
+    
+    foreach ($ver in 1..5) {
+        $capacity = $versionCapacity[$ver][$ErrorCorrection]
+        if ($dataLength -le $capacity) {
+            $version = $ver
+            $size = $versionCapacity[$ver].Size
+            break
+        }
+    }
+    
+    Write-Verbose "Using QR version $version (${size}x${size}) with capacity of $($versionCapacity[$version][$ErrorCorrection]) bytes"
 
     # Initialize matrix
     $matrix = New-Object 'bool[][]' $size
@@ -191,7 +195,10 @@ function Get-QRMatrix {
         $matrix[$i][6] = ($i % 2) -eq 0
     }
 
-    # Encode data (simplified encoding - creates a pattern based on text)
+    # Encode data (simplified encoding)
+    # Note: This is a basic QR code implementation that directly encodes UTF-8 bytes
+    # without formal QR code format indicators, mode indicators, or Reed-Solomon
+    # error correction codes. For production use, consider a full QR code library.
     # dataBytes already calculated above for version selection
     $dataIndex = 0
     
