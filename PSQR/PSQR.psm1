@@ -95,7 +95,19 @@ Windows: choco install qrencode or scoop install qrencode
                 # Read and display the QR code
                 Write-Verbose "Rendering QR code to console"
                 Write-Host ""
-                Get-Content $tempFile | ForEach-Object { Write-Host $_ }
+                
+                # Read all lines and process the last line to use top-half blocks
+                $lines = Get-Content $tempFile
+                for ($i = 0; $i -lt $lines.Count; $i++) {
+                    if ($i -eq ($lines.Count - 1)) {
+                        # Replace full blocks with top-half blocks on the last line for symmetry
+                        $lastLine = $lines[$i] -replace [char]0x2588, [char]0x2580
+                        Write-Host $lastLine
+                    } else {
+                        Write-Host $lines[$i]
+                    }
+                }
+                
                 Write-Host ""
                 
                 Write-Verbose "QR code generation complete"
