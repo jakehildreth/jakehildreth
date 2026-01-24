@@ -1,68 +1,21 @@
 ---
 applyTo: '**/*'
-description: 'Context about Jake Hildreth for personalized assistance across all projects'
+description: 'Technical standards and preferences for Jake Hildreth projects'
 ---
 
-# About Jake Hildreth
+# Jake Hildreth - Development Standards
 
-## Professional Identity
+## Quick Reference
 
-**Name:** Jake Hildreth  
-**Current Role:** Principal Security Consultant at Semperis  
-**Recognition:** Microsoft MVP (PowerShell & Identity and Access) - 2025  
-**Experience:** 25 years in IT  
-**Self-Description:** "Recovering Sysadmin" who builds tools to make identity security "suck a little less"
+When assisting Jake, remember:
 
-## Areas of Expertise
-
-- **Primary Focus:** Active Directory Certificate Services (AD CS) security
-- **Core Skills:**
-  - Active Directory security and hardening
-  - Public Key Infrastructure (PKI)
-  - Identity and Access Management
-  - PowerShell module development
-  - Kerberos authentication
-  - DNS security (Active Directory-Integrated DNS)
-  - Protected Users Group implementation
-
-## Professional Certifications
-
-- **CISSP** (Certified Information Systems Security Professional) - Expires Jan 31, 2028
-- **CompTIA Security+ ce** - Expires May 28, 2027
-- **CompTIA A+** - Issued Feb 21, 2003 (foundation cert from early career)
-- **Microsoft MVP** - Issued in 2025
-
-## Open Source Projects
-
-### Major Projects (in order of popularity)
-
-1. **Locksmith** (1,400+ stars)
-   - Purpose: Find and fix AD CS misconfigurations
-   - Scans: ESC1-ESC16 vulnerabilities
-   - Available on PowerShell Gallery
-   - 16 contributors
-   - Version format: CalVer (e.g., v2025.9.8)
-
-2. **BlueTuxedo** (141 stars)
-   - Purpose: Active Directory-Integrated DNS auditing and remediation
-   - Features: Get/Test/Repair pattern for DNS issues
-   - Finds dangling SPNs, tombstoned DNS records
-   - Version format: CalVer (e.g., v2024.10)
-
-3. **PowerPUG!** (128 stars)
-   - Purpose: Help admins safely adopt the Protected Users Group
-   - Scans DC event logs for compatibility issues
-   - Version format: CalVer (e.g., v2024.11.11)
-
-4. **Stepper**
-   - Purpose: Resumable, step-by-step automation scripts with state persistence
-   - Cross-platform support (Windows, Linux, macOS)
-   - Version format: CalVer (YYYY.MM.DD format: 2025.10.24)
-
-5. **ESCalator**
-   - Purpose: Original research tool for AD CS escalation chains
-   - Links multiple ESC vulnerabilities to show compound attack paths
-   - Related project: "Stairs" (defanged demo version)
+- [x] Use CalVer (YYYY.MM.DD) - see Versioning section
+- [x] No emojis - see Code Style and Documentation Standards sections
+- [x] Follow PowerShell standards - see PowerShell Specific section
+- [x] Conventional commits with detailed bullets - see Git Workflow section
+- [x] Cross-platform support (Windows/Linux/macOS)
+- [x] Concise, practical documentation
+- [x] Security and identity focus
 
 ## Development Preferences & Standards
 
@@ -78,9 +31,19 @@ description: 'Context about Jake Hildreth for personalized assistance across all
 ### Documentation Standards
 - **No emojis** in documentation
 - **Clean, concise** documentation style
-- **Keep a Changelog** format for CHANGELOG.md
 - Focus on practical examples over verbose explanations
 - READMEs should focus on: installation, quick start, examples
+- Every README for Jake's project should end with the following sections:
+
+```markdown
+## License
+
+MIT License w/Commons Clause - see [LICENSE](LICENSE) file for details.
+
+---
+
+Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
+```
 
 ### PowerShell Specific
 
@@ -159,141 +122,29 @@ Include for all public functions:
 - `.NOTES` - Additional information
 
 ### Git Workflow
-- Uses conventional commits (e.g., `chore:`, `docs:`, `feat:`, `fix:`)
-- Maintains clean history
 
-## Personal Context
+Commit messages should be clear and descriptive using conventional commits format: `type(scope): message`
 
-**Family:** Married with a daughter (describes them as "most grounding reality check")  
-**Interests:**
-- Powerlifting (presents "PKI and Powerlifting" talks combining both interests)
-- Self-hosting infrastructure
-- Continuous learning (mentions freeCodeCamp, Blazor, PNPT journey)
+**Types:** feat, fix, docs, style, refactor, test, chore
 
-**Online Presence:**
-- Website: jakehildreth.com
-- GitHub: jakehildreth
-- Email: jake@dotdot.horse
-- Blog: jakehildreth.github.io/blog
-- Mastodon: @horse@infosec.exchange
-- Bluesky: dotdot.horse
-- Ko-fi: jakehildreth (accepts donations/support)
-- LinkedIn: linkedin.com/in/jakehildreth
+**Examples:**
+- `feat(detection): add ESC13 detection`
+- `refactor(error-handling): use $PSCmdlet.WriteError in Get-AdcsObjects`
+- `fix(validation): add null check for module version in Test-IsLatestVersion`
 
-**Personal Branding:**
-- "...horse?" recurring theme across platforms
-- ASCII art in tools (locksmith, PowerPUG!)
-- Humorous but professional tone
-- Focus on practical, actionable solutions
-- "Making complex topics accessible" is a core value
+**Never use vague messages:**
+- ❌ Bad: `refactor: update functions for improvements`
+- ❌ Bad: `chore: update error handling`
+- ✅ Good: `refactor(error-handling): replace Write-Error with $PSCmdlet.WriteError in 8 functions`
+- ✅ Good: `fix(pipeline): add ValueFromPipeline support to Test-IsModuleAvailable`
 
-## Speaking & Education
-
-### Upcoming Conferences (as of Dec 26, 2025)
-- **CodeMash** (Jan 13-16, 2025) - "PKI Unlocked: A No-Math Primer for Builders"
-
-### Recent Presentations
-- **Anti-Cast Training** (Nov 12, 2025) - "PKI Foundations for Security Pros"
-- **Queen City Con** (Nov 7, 2025) - "Making $ with COMPUTER$"
-- **HIPConf** (Oct 7-9, 2025) - "End the ESCape Clause!" (ESCalator research)
-- **PancakesCon 6** (Sep 21, 2025) - "PKI and Powerlifting!"
-- **Blue Team Con** (Sep 6-7, 2025) - Red tenant model with Eric Woodruff
-
-### Teaching Style
-- Progressive concept building
-- Practical, hands-on demonstrations
-- Makes PKI and AD CS accessible to non-experts
-- "No-math" approach to PKI
-- Focuses on the AD in AD CS.
-
-## Blog & Writing
-
-**Blog:** jakehildreth.github.io/blog  
-**Posting Frequency:** Very active (50+ posts since 2023)  
-**Topics:**
-- AD CS security
-- PowerShell development
-- PKI/certificate services
-- macOS administration
-- Tool development
-- Career reflections
-
-**Notable Series:**
-- Protected Users Group (multi-part)
-- LLMs and AI (pragmatic perspective)
-- Locksmith development journey
-
-## Professional Network
-
-**Collaborators:**
-- Eric Woodruff (ericonidentity.com) - Cloud/hybrid identity
-- John Askew (sk3w) - Computer account abuse research
-- Sam Erde - Major contributor to multiple projects
-
-**Community:**
-- Active in security conferences
-- Open source contributor
-- Frequent conference speaker
-- Technical blogger
-
-## Work Environment
-
-**Operating System:** Windows/macOS
-**Shell:** PowerShell (pwsh.exe/pwsh) and Windows PowerShell (powershell.exe)
-
-## Philosophy & Approach
-
-- **Makes identity security accessible** to overworked admins
-- **Open source first** - all major tools freely available
-- **Education focused** - writes, speaks, teaches constantly
-- **Practical over theoretical** - tools solve real problems
-- **Community-oriented** - engages, collaborates, shares knowledge
-- **Family-focused** - maintains work-life balance
-- **Continuous improvement** - always learning, experimenting
-- **Pragmatic about technology** - uses what works, critiques thoughtfully
-
-## Notable Quotes & Themes
-
-- "I'm in your Active Directory, securing all your objects"
-- "Making identity security suck a little less"
-- "Recovering Sysadmin"
-- "Baroque disaster that is AD Certificate Services"
-- Describes family as "favorite people and most grounding reality check"
-
-## When Assisting Jake
-
-1. **Use CalVer** not SemVer for versioning (YYYY.MM.DD format)
-2. **No emojis** in code or documentation
-3. **Follow PowerShell Specific section** for code formatting, naming, and patterns
-4. **Keep documentation concise** and practical
-5. **Assume cross-platform** needs (Windows/Linux/macOS, Desktop/Core)
-6. **Conventional commits** for git messages (chore, docs, feat, fix)
-7. **Focus on security** and identity-related solutions
-8. **Value simplicity** and maintainability
-
-### Git Workflow
-
-- Commit messages should be clear and descriptive
-- Use conventional commits format: `type(scope): message`
-  - Types: feat, fix, docs, style, refactor, test, chore
-  - Example: `feat(detection): add ESC13 detection`
-  - Example: `refactor(error-handling): use $PSCmdlet.WriteError in Get-AdcsObjects`
-  - Example: `fix(validation): add null check for module version in Test-IsLatestVersion`
-- **Never use vague messages** like "update XXXXX for internal improvements"
-  - ❌ Bad: `refactor: update functions for improvements`
-  - ❌ Bad: `chore: update error handling`
-  - ✅ Good: `refactor(error-handling): replace Write-Error with $PSCmdlet.WriteError in 8 functions`
-  - ✅ Good: `fix(pipeline): add ValueFromPipeline support to Test-IsModuleAvailable`
-
-#### Required Commit Message Detail Level
-
-**All commits must include detailed bullet points** explaining:
+**All commits must include detailed bullet points:**
 1. What files were modified/created
 2. What functionality was added/changed
 3. What the code detects/does
 4. Additional context about the implementation
 
-**Example of required detail level:**
+**Example:**
 ```
 feat(detection): add ESC11 detection for CA RPC encryption requirement
 
@@ -304,20 +155,66 @@ feat(detection): add ESC11 detection for CA RPC encryption requirement
 - Provides fix/revert scripts using certutil
 ```
 
-**Another example:**
-```
-feat(detection): add ESC6 detection for CA EDITF_ATTRIBUTESUBJECTALTNAME2 flag
+Keep commits atomic and focused.
 
-- Create Find-VulnerableCA.ps1 for CA-level vulnerability detection
-- Add ESC6 definition to ESCDefinitions.psd1
-- Integrate ESC6 scan into Invoke-Locksmith2.ps1
-- Detects CAs with EDITF_ATTRIBUTESUBJECTALTNAME2 enabled
-- Provides fix/revert scripts using certutil
-```
+## Work Environment
 
-- Keep commits atomic and focused
-- Be specific about what changed and why
+**Operating System:** Windows/macOS  
+**Shell:** PowerShell (pwsh.exe/pwsh) and Windows PowerShell (powershell.exe)
+
+## Domain Context
+
+**Primary Focus:** Active Directory Certificate Services (AD CS) security, PKI, Identity and Access Management
+
+**Major Projects:**
+- **Locksmith** - Find and fix AD CS misconfigurations (ESC1-ESC16)
+- **BlueTuxedo** - Active Directory-Integrated DNS auditing and remediation
+- **PowerPUG!** - Protected Users Group adoption tooling
+- **Stepper** - Resumable, step-by-step automation scripts
+- **ESCalator** - AD CS escalation chain research tool
 
 ---
+
+## LICENSE Guidance
+
+Every project created by Jake should follow this format:
+
+```
+"Commons Clause" License Condition v1.0
+
+The Software is provided to you by the Licensor under the License, as defined below, subject to the following condition.
+
+Without limiting other conditions in the License, the grant of rights under the License will not include, and the License does not grant to you, the right to Sell the Software.
+
+For purposes of the foregoing, "Sell" means practicing any or all of the rights granted to you under the License to provide to third parties, for a fee or other consideration (including without limitation fees for hosting or consulting/support services related to the Software), a product or service whose value derives, entirely or substantially, from the functionality of the Software. Any license notice or attribution required by the License must also include this Commons Clause License Condition notice.
+
+Software: [PROJECT NAME HERE]
+License: MIT
+Licensor: Jake Hildreth, Gilmour Technologies Ltd
+
+---
+
+MIT License
+
+Copyright (c) 2026 Jake Hildreth, Gilmour Technologies Ltd
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 *This context file helps GitHub Copilot provide personalized assistance aligned with Jake's preferences, standards, and working style.*
