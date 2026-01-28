@@ -6,7 +6,7 @@
     - [BlueTuxedo](https://github.com/jakehildreth/BlueTuxedo): A tiny tool built to find and fix common misconfigurations in Active Directory-integrated DNS.
     - [PowerPUG!](https://github.com/jakehildreth/PowerPUG): A tiny tool built to help AD Admins tame the Protected Users group.
     - [Stepper](https://github.com/jakehildreth/Stepper): A PowerShell utility module for creating resumable, step-by-step scripts with automatic state persistence and cross-platform support.
-    - [Deck](https://github.com/jakehildreth/Deck)Terminal-based presentations from Markdown files using PowerShell.
+    - [Deck](https://github.com/jakehildreth/Deck): Terminal-based presentations from Markdown files using PowerShell.
     - [Stairs](https://github.com/jakehildreth/Stairs): A tiny tool for *identifying* AD CS issue combinations that may not be readily obvious that could result in forest compromise
   - developing:
     - [Locksmith 2](https://github.com/jakehildreth/Locksmith2): An AD CS toolkit for AD Admins, Defensive Security Professionals, and Filthy Red Teamers.
