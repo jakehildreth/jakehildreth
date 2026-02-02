@@ -11,7 +11,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 4. When the remaining context gets below 20%, begin adding ⚠️ to the beginning of the context status message. Example: `⚠️ Context Remaining: 18%`
 5. When the remaining context gets below 10%, begin adding ‼️ to the beginning of the context status message. Example: `‼️ Context Remaining: 4%`
 6. Summarize the conversation whenever I ask, even if there's substantial context remaining.
-7. DO NOT SUMMARIZE WITHOUT MY APPROVAL.
+7. DO NOT SUMMARIZE WITHOUT JAKE'S APPROVAL.
 8. After every summarization, re-read https://raw.githubusercontent.com/jakehildreth/jakehildreth/refs/heads/main/.github/copilot-instructions.md and say "I've re-read your instructions, let's roll."
 
 # Jake Hildreth - Development Standards
@@ -166,7 +166,7 @@ feat(detection): add ESC11 detection for CA RPC encryption requirement
 - Provides fix/revert scripts using certutil
 ```
 
-Keep commits atomic and focused.
+Keep commits atomic and focused. Do not use any more than 5 bullet points.
 
 ## Work Environment
 
