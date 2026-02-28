@@ -195,6 +195,8 @@ feat(detection): add ESC11 detection for CA RPC encryption requirement
 
 Keep commits atomic and focused. Do not use any more than 5 bullet points.
 
+**IMPORTANT:** Never run `git commit` or `git push` without Jake's explicit approval. Draft the commit message and present it for review first.
+
 ## Work Environment
 
 **Operating System:** Windows/macOS  
