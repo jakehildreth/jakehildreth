@@ -1,20 +1,9 @@
 ### Hi. I'm Jake! 👋
 
-- 🔭 I’m currently:
-  - maintaining:
-    - [Locksmith](https://github.com/jakehildreth/Locksmith): A small tool built to find and fix common misconfigurations in Active Directory Certificate Services.
-    - [BlueTuxedo](https://github.com/jakehildreth/BlueTuxedo): A tiny tool built to find and fix common misconfigurations in Active Directory-integrated DNS.
-    - [PowerPUG!](https://github.com/jakehildreth/PowerPUG): A tiny tool built to help AD Admins tame the Protected Users group.
-    - [Stepper](https://github.com/jakehildreth/Stepper): A PowerShell utility module for creating resumable, step-by-step scripts with automatic state persistence and cross-platform support.
-    - [Deck](https://github.com/jakehildreth/Deck): Terminal-based presentations from Markdown files using PowerShell.
-    - [Stairs](https://github.com/jakehildreth/Stairs): A tiny tool for *identifying* AD CS issue combinations that may not be readily obvious that could result in forest compromise
-  - developing:
-    - [Locksmith 2](https://github.com/jakehildreth/Locksmith2): An AD CS toolkit for AD Admins, Defensive Security Professionals, and Filthy Red Teamers.
-    - [PSCertutil](https://github.com/jakehildreth/PSCertutil): A PowerShell wrapper for certutil.exe.
-    - [ADCSGoat](https://github.com/jakehildreth/ADCSGoat): A Deliberately Vulnerable Active Directory Certificate Services Lab.
-    - [PX2PS](https://github.com/jakehildreth/PX2PS): A PowerShell utility module for converting Pixquare format (.px) files into PowerShell terminal graphics.
-  - A Microsoft MVP?
+- 🔭 You probably know me for creating such identity-related tools as [Locksmith](https://github.com/jakehildreth/Locksmith), [BlueTuxedo](https://github.com/jakehildreth/BlueTuxedo), and [PowerPUG!](https://github.com/jakehildreth/PowerPUG). I'm currently working primarily on [Locksmith 2](https://github.com/jakehildreth/Locksmith2) and [PSCertutil](https://github.com/jakehildreth/PSCertutil).
+- ⭐️ I also create little tools in PowerShell like [Stepper](https://github.com/jakehildreth/Stepper), and [PX2PS](https://github.com/jakehildreth/PX2PS).
+- 🪟 I'm currently a [Microsoft MVP](https://mvp.microsoft.com/en-US/MVP/profile/2bfd3bfc-7195-48cd-9218-58d9230351df) in both PowerShell and Identity/Access.
 - 🌱 I’m always learning AD/AD CS security but mostly learning how to develop PowerShell.
 - 🤔 I’m looking for help with Active Directory remediation tool testing and documentation.
-- 📫 How to reach me: [LinkedIn](https://linked.in/jakehildreth)
+- 📫 You can find multiple ways to contact me on my website: [jakehildreth.com](https://jakehildreth.com)
 - 😄 Pronouns: he/him.
