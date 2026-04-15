@@ -41,7 +41,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 When assisting Jake, remember:
 
-- [x] Use CalVer (YYYY.MM.DD) - see Versioning section
+- [x] Use CalVer (yyyy.M.dHHmm) - see Versioning section
 - [x] No emojis - see Code Style and Documentation Standards sections
 - [x] Follow PowerShell standards - see PowerShell Specific section
 - [x] Conventional commits with detailed bullets - see Git Workflow section
@@ -52,7 +52,7 @@ When assisting Jake, remember:
 ## Development Preferences & Standards
 
 ### Versioning
-- **Uses CalVer (Calendar Versioning):** YYYY.MM.DD format (e.g., 2025.10.24)
+- **Uses CalVer (Calendar Versioning):** yyyy.M.dHHmm format (e.g., 2025.10.24)
 - **Does NOT use SemVer** (Semantic Versioning)
 - Consistent across all projects (Locksmith, BlueTuxedo, PowerPUG!, Stepper)
 
