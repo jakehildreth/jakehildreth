@@ -80,8 +80,11 @@ Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
 ### PowerShell Specific
 
 #### General Standards
-- Follow awesome-copilot PowerShell instructions: https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
-- Follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
+- Read and follow PowerShell best practices:
+https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
+- Read and follow Pester testing best practices:
+https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
+- Read and follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
 - When there is a conflict between guidance documents, prefer project-level instructions first.
 - Tend toward verbose and descriptive variable names
 - Follows Microsoft PowerShell best practices
