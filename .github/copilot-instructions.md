@@ -43,7 +43,7 @@ When assisting Jake, remember:
 
 - [x] We do Test-Driven Development in this house. Always start with the tests. ALWAYS.
 - [x] Use CalVer (yyyy.M.dHHmm) - see Versioning section
-- [x] No emojis - see Code Style and Documentation Standards sections
+- [x] No emojis (except in README)- see Code Style and Documentation Standards sections
 - [x] Follow PowerShell standards - see PowerShell Specific section
 - [x] Conventional commits with detailed bullets - see Git Workflow section
 - [x] Cross-platform support (Windows/Linux/macOS)
@@ -83,8 +83,6 @@ Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
 #### General Standards
 - Read and follow PowerShell best practices:
 https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
-- Read and follow Pester testing best practices:
-https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
 - Read and follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
 - When there is a conflict between guidance documents, prefer project-level instructions first.
 - Tend toward verbose and descriptive variable names
@@ -93,6 +91,11 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 - Comment-based help for all functions
 - Cross-platform compatibility (Windows, Linux, macOS)
 - PowerShell 5.1+ support first, PowerShell Core support next
+
+#### Pester Tests
+- Read and follow Pester testing best practices:
+https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
+- When running Pester autonomously, agents should write all test output to a file then read that file. Letting Pester run in an agent terminal tends to hang VS Code.
 
 #### Naming and Style
 - **Function Names:** Verb-Noun format using approved verbs, PascalCase, singular nouns
