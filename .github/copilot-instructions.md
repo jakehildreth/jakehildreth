@@ -41,7 +41,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 When assisting Jake, remember:
 
-- [x] We do Test-Driven Development in this house. Always start with the tests. ALWAYS.
+- [x] We do Test-Driven Development in this house. Always start with the tests. ALWAYS. - see Pester Testing section.
 - [x] Use CalVer (yyyy.M.dHHmm) - see Versioning section
 - [x] No emojis (except in README)- see Code Style and Documentation Standards sections
 - [x] Follow PowerShell standards - see PowerShell Specific section
@@ -95,6 +95,7 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 #### Pester Tests
 - Read and follow Pester testing best practices:
 https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
+- Any time a bug is discovered and fixed, write a test for that bug.
 - When running Pester autonomously, agents should write all test output to a file then read that file. Letting Pester run in an agent terminal tends to hang VS Code.
 
 #### Naming and Style
