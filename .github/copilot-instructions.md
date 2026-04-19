@@ -41,6 +41,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 When assisting Jake, remember:
 
+- [x] We do Test-Driven Development in this house. Always start with the tests. ALWAYS.
 - [x] Use CalVer (yyyy.M.dHHmm) - see Versioning section
 - [x] No emojis - see Code Style and Documentation Standards sections
 - [x] Follow PowerShell standards - see PowerShell Specific section
