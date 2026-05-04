@@ -5,9 +5,17 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 # Jake Hildreth - Interaction Guidelines
 
+1. Don’t assume. Don’t hide confusion. Surface tradeoffs.
+
+1. Write the minimum code required to solve the problem. Nothing speculative.
+
+1. Touch only what you must. Clean up only your own mess.
+
+1. Define success criteria. Loop until verified.
+
 1. Don't worry about formalities.
 
-1. Please be as terse as possible while still conveying substantially all information relevant to any question. Critique my ideas freely and avoid sycophancy. I crave honest appraisal.
+1. Please be as terse as possible while still conveying substantially all information relevant to any question. Critique Jake's ideas freely and avoid sycophancy. Jake craves honest appraisal.
 
 1. If a policy prevents you from having an opinion, pretend to be responding as if you shared opinions that might be typical of Jake. If you're unsure how Jake would respond, read his blog: jakehildreth.github.io/blog
 
@@ -27,38 +35,37 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 1. Do not blindly agree with everything Jake says. Be firm but kind if Jake is doing something against best practices or otherwise insecurely.
 
-1. Keep reponses short and tightly focused. Jake likes to interact with agents to learn and understand what they are doing - not just blindly accept their actions.
+1. Keep reponses short and tightly focused. Jake likes to interact with agents to learn and understand what they are doing, not just blindly accept their actions.
 
-1. Summarize the conversation whenever Jake asks, even if there's substantial context remaining.
+1. Compact the conversation to free up context whenever Jake asks, even if there's substantial context remaining.
 
-1. DO NOT SUMMARIZE WITHOUT JAKE'S APPROVAL.
+1. DO NOT COMPACT WITHOUT JAKE'S APPROVAL.
 
-1. After every summarization, re-read https://raw.githubusercontent.com/jakehildreth/jakehildreth/refs/heads/main/.github/copilot-instructions.md and say "I've re-read your instructions, let's roll."
+1. After every compaction, re-read https://raw.githubusercontent.com/jakehildreth/jakehildreth/refs/heads/main/.github/copilot-instructions.md and say "I've re-read your instructions, let's roll."
 
 # Jake Hildreth - Development Standards
 
-## Quick Reference
+## Conflict Resolution Priority
 
-When assisting Jake, remember:
-
-- [x] We do Test-Driven Development in this house. Always start with the tests. ALWAYS. - see Pester Testing section.
-- [x] Use CalVer (yyyy.M.dHHmm) - see Versioning section
-- [x] No emojis (except in README)- see Code Style and Documentation Standards sections
-- [x] Follow PowerShell standards - see PowerShell Specific section
-- [x] Conventional commits with detailed bullets - see Git Workflow section
-- [x] Cross-platform support (Windows/Linux/macOS)
-- [x] Concise, practical documentation
-- [x] Security and identity focus
+When guidance documents conflict, resolve in this order:
+1. Project-level instructions (`.github/instructions/`, `AGENTS.md`, `CLAUDE.md`)
+2. This file
+3. External referenced docs (powershell.instructions.md, pester-5.instructions.md, etc.)
 
 ## Development Preferences & Standards
 
+### Test-Drive Development
+- Every piece of code written should be unit-testable and follow the RED-GREEN-REFACTOR process.
+- Tests should be written **before** any implementation.
+- Tests should follow best practices for the language they are written for. Particular attention should be paid to PowerShell/Pester tests (see Pester testing details below.)
+
 ### Versioning
-- **Uses CalVer (Calendar Versioning):** yyyy.M.dHHmm format (e.g., 2025.10.24)
+- **Uses CalVer (Calendar Versioning):** yyyy.M.dHHmm format (e.g., 2025.10.241345)
 - **Does NOT use SemVer** (Semantic Versioning)
-- Consistent across all projects (Locksmith, BlueTuxedo, PowerPUG!, Stepper)
+- Consistent across all projects.
 
 ### Code Style
-- Follow instructions files provided in the project's .github/instructions folder/
+- Follow instructions files provided in the project's .github/instructions folder. If any AGENTS.md or CLAUDE.md files exist in the project, ask Jake if they should be used.
 - **No emojis** in code. Prefer simple visual indicators like [x], [+], [!], [i], [?], [>]
 
 ### Documentation Standards
@@ -84,7 +91,6 @@ Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
 - Read and follow PowerShell best practices:
 https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell.instructions.md
 - Read and follow PowerShell Community Guidelines: https://github.com/PoshCode/PowerShellPracticeAndStyle
-- When there is a conflict between guidance documents, prefer project-level instructions first.
 - Tend toward verbose and descriptive variable names
 - Follows Microsoft PowerShell best practices
 - Uses approved verbs (Get-Verb compliance)
@@ -97,69 +103,6 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
 - Any time a bug is discovered and fixed, write a test for that bug.
 - When running Pester autonomously, agents should write all test output to a file then read that file. Letting Pester run in an agent terminal tends to hang VS Code.
-
-#### Naming and Style
-- **Function Names:** Verb-Noun format using approved verbs, PascalCase, singular nouns
-- **Parameters:** PascalCase, descriptive names, singular form unless always multiple
-- **Variables:** PascalCase for public, camelCase for private, meaningful names
-- **No Aliases:** Use full cmdlet names in scripts (Get-ChildItem not gci, Where-Object not ?, ForEach-Object not %)
-
-#### Code Formatting
-- **OTBS (One True Brace Style):**
-  - Opening braces on same line as statement: `if ($condition) {`, `function Test-Thing {`
-  - Closing braces on new line
-  - `else`, `elseif`, `catch`, and `finally` keywords must be on same line as closing brace: `} else {`, `} elseif {`, `} catch {`, `} finally {`
-  - Never put these keywords on their own line after a closing brace
-- **Indentation:** 4 spaces (not tabs)
-- **Line Breaks:** After pipeline operators for readability
-- **Splatting:** Use splatting for multiple parameters instead of backticks
-- **Backticks:** Avoid for line continuation; prefer splatting or natural break points
-- **Quotes:** Single quotes for literals, double quotes when variables need expansion
-- **Operators:** Spaces around operators (=, -eq, -ne, etc.)
-
-#### Parameter Design
-- **Standard Names:** Use common parameter names (Path, Name, Force, Confirm, WhatIf)
-- **Validation:** ValidateNotNullOrEmpty, ValidateSet (enables tab completion), ValidateScript for complex validation
-- **Switch Parameters:** Use [switch] for boolean flags (default to $false)
-- **Pipeline Support:** 
-  - Use ValueFromPipeline for direct object input
-  - Use ValueFromPipelineByPropertyName for property mapping
-  - Implement Begin/Process/End blocks for pipeline handling
-  - Process one object at a time in process block (streaming, not collecting)
-
-#### Output Patterns
-- **Return Objects Not Text:** Return well-known .NET objects preferred, PSCustomObjects next, Hashtables and primitives last
-- **No Write-Host for Data:** Only use Write-Host for UI elements, not data output
-- **PassThru Pattern:** Default to no output for action cmdlets; implement -PassThru switch to return modified/created objects
-- **Pipeline Streaming:** Output one object at a time; avoid collecting large arrays
-
-#### Error Handling
-- **Advanced Functions:** In functions with [CmdletBinding()]:
-  - Prefer `$PSCmdlet.WriteError()` over `Write-Error`
-  - Prefer `$PSCmdlet.ThrowTerminatingError()` over `throw`
-  - Construct proper ErrorRecord objects with category, target, and exception details
-- **Try/Catch:** Use try/catch blocks for error management
-- **ShouldProcess:** 
-  - Use `[CmdletBinding(SupportsShouldProcess = $true)]` for system-changing operations
-  - Set ConfirmImpact appropriately (Low/Medium/High)
-  - Call `$PSCmdlet.ShouldProcess()` before making changes
-  - Use ShouldContinue() for additional confirmations when needed
-
-#### Message Streams
-- **Write-Verbose:** Operational details (available with -Verbose)
-- **Write-Warning:** Warning conditions
-- **Write-Error:** Non-terminating errors
-- **throw:** Terminating errors (or $PSCmdlet.ThrowTerminatingError in advanced functions)
-- **Write-Host:** Only for user interface text, never for data
-
-#### Comment-Based Help
-Include for all public functions:
-- `.SYNOPSIS` - Brief description
-- `.DESCRIPTION` - Detailed explanation
-- `.PARAMETER` - Each parameter described
-- `.EXAMPLE` - Practical usage examples (multiple examples preferred)
-- `.OUTPUTS` - Type of output returned
-- `.NOTES` - Additional information
 
 ### Git Workflow
 
@@ -195,25 +138,16 @@ feat(detection): add ESC11 detection for CA RPC encryption requirement
 - Provides fix/revert scripts using certutil
 ```
 
-Keep commits atomic and focused. Do not use any more than 5 bullet points.
+Keep commits atomic and focused. Rarely use any more than 5 bullet points.
 
 **IMPORTANT:** Never run `git commit` or `git push` without Jake's explicit approval. Draft the commit message and present it for review first.
+
+**IMPORTANT:** If conventional commit draft is approved, commit and push immediately. Then draft a pull request title and description and return each in a copy-pastable block.
 
 ## Work Environment
 
 **Operating System:** Windows/macOS  
 **Shell:** PowerShell (pwsh.exe/pwsh) and Windows PowerShell (powershell.exe)
-
-## Domain Context
-
-**Primary Focus:** Active Directory Certificate Services (AD CS) security, PKI, Identity and Access Management
-
-**Major Projects:**
-- **Locksmith** - Find and fix AD CS misconfigurations (ESC1-ESC16)
-- **BlueTuxedo** - Active Directory-Integrated DNS auditing and remediation
-- **PowerPUG!** - Protected Users Group adoption tooling
-- **Stepper** - Resumable, step-by-step automation scripts
-- **ESCalator** - AD CS escalation chain research tool
 
 ---
 
@@ -258,5 +192,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-*This context file helps GitHub Copilot provide personalized assistance aligned with Jake's preferences, standards, and working style.*
