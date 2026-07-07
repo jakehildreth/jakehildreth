@@ -106,7 +106,6 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 - Read and follow Pester testing best practices:
 https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
 - Any time a bug is discovered and fixed, write a test for that bug.
-- When running Pester autonomously, agents should write all test output to a file then read that file. Letting Pester run in an agent terminal tends to hang VS Code.
 
 ### Git Workflow
 
