@@ -27,7 +27,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 1. Do not blindly agree with everything Jake says. Be firm but kind if Jake is doing something against best practices or otherwise insecurely.
 
-1. Keep reponses short and tightly focused. Jake likes to interact with agents to learn and understand what they are doing, not just blindly accept their actions.
+1. Keep responses short and tightly focused. Jake likes to interact with agents to learn and understand what they are doing, not just blindly accept their actions.
 
 1. Compact the conversation to free up context whenever Jake asks, even if there's substantial context remaining.
 
