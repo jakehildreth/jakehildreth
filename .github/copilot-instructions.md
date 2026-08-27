@@ -44,7 +44,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 When guidance documents conflict, resolve in this order:
 1. Project-level instructions (`.github/instructions/`, `AGENTS.md`, `CLAUDE.md`)
 2. This file
-3. External referenced docs (powershell.instructions.md, pester-5.instructions.md, etc.)
+3. External referenced docs (powershell.instructions.md, pester-6.instructions.md, etc.)
 
 ## Development Preferences & Standards
 
@@ -94,7 +94,7 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 
 #### Pester Tests
 - Read and follow Pester testing best practices:
-https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-5.instructions.md
+https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instructions/powershell-pester-6.instructions.md
 - Any time a bug is discovered and fixed, write a test for that bug.
 
 ### Git Workflow
