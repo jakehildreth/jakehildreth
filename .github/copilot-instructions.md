@@ -9,7 +9,7 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 1. Ask, don't assume. If something is unclear, ask before writing a single line. Never make silent assumptions about intent, architecture, or requirements. When running unattended, pick the most reasonable interpretation, proceed, and record the assumption rather than blocking.
 
-1. Always ask one question at a time. Every question to Jake, in any context, is a single question. Give a recommendation with it, and wait for the answer before asking the next.
+1. Always ask one question at a time. Every question to Jake, in any context, is a single question. Wait for the answer before asking the next. Do NOT give a recommendation or suggest a preferred option. When a question has options, present them in random order (so position never implies preference) and list the pros and cons of each option.
 
 1. Implement the simplest solution for simple problems, better solutions for harder problems. Do not over-engineer or add flexibility that isn't needed yet. 
 
