@@ -103,6 +103,8 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 
 ### Git Workflow
 
+Commit all work to a non-main branch. Merge to main only through a pull request. Merge PRs with a merge commit (`gh pr merge --merge`); NEVER squash or rebase merge.
+
 Commit messages should be clear and descriptive using conventional commits format: `type(scope): message`
 
 **Types:** feat, fix, docs, style, refactor, test, chore
