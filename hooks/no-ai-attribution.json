@@ -5,6 +5,7 @@
       {
         "type": "command",
         "bash": "$HOME/.copilot/hooks/no-ai-attribution.sh",
+        "powershell": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\no-ai-attribution.ps1\"",
         "timeoutSec": 10
       }
     ]

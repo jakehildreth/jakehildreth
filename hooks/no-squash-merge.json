@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "$HOME/.copilot/hooks/no-squash-merge.sh",
+        "powershell": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\no-squash-merge.ps1\"",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}
