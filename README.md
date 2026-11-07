@@ -7,3 +7,8 @@
 - 🤔 I’m looking for help with Active Directory remediation tool testing and documentation.
 - 📫 You can find multiple ways to contact me on my website: [jakehildreth.com](https://jakehildreth.com)
 - 😄 Pronouns: he/him.
+
+Colors I like:
+- Purple #301934
+- Pink #FF7070
+- Blue #D6D6FF
