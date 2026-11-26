@@ -13,7 +13,17 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 
 1. Implement the simplest solution for simple problems, better solutions for harder problems. Do not over-engineer or add flexibility that isn't needed yet. 
 
+1. When rewriting Jake's prompt or request, preserve every stated scope exactly. Diff the rewrite against the original before presenting it.
+
+1. If Jake names a workflow you don't recognize (a capitalized name, e.g. wayfinder, grilling, groundhog), check installed skills first before answering generically.
+
+1. When Jake is unavailable (unattended or automation mode), stop at any step that requires his decision. Record the pending decision. Do not guess through it.
+
+
 1. Don't touch unrelated code but please do surface bad code or design smells you discover with me so we can address them as a separate issue.
+
+1. Reuse before building. Before writing a helper, mod, or component, check the repo for an existing working one and extend it. Surface what you found and reused.
+
 
 1. Flag uncertainty explicitly. If you're unsure about something, see point 1 above. If it makes sense to do so, conduct a small, localised and low-risk experiment and bring the hypothesis and results to me to discuss. Confidence without certainty causes more damage than admitting a gap.
 
@@ -40,6 +50,16 @@ description: 'Technical standards and preferences for Jake Hildreth projects'
 1. DO NOT COMPACT WITHOUT JAKE'S APPROVAL.
 
 1. After every compaction, re-read https://raw.githubusercontent.com/jakehildreth/jakehildreth/refs/heads/main/.github/copilot-instructions.md and say "I've re-read your instructions, let's roll."
+
+## Working Safely
+
+- Print specific keys from config or credential files (e.g. with jq). Never print a whole file that can contain tokens.
+- All shell snippets for Jake must be PowerShell.
+- Before installing anything (plugin, package, extension), confirm which project or product it targets when more than one candidate exists.
+- Start long-lived dev servers detached from your shell, or hand Jake the command to run. A server started as your child process dies when your session ends.
+- After UI changes, open the result in Jake's browser. A headless screenshot is not a substitute when a browser is available.
+- When rebasing stacked PRs, resolve conflicts file-by-file. Blanket `--ours` or `--theirs` resolution silently drops the branch's own changes.
+
 
 # Jake Hildreth - Development Standards
 
@@ -83,6 +103,8 @@ MIT License w/Commons Clause - see [LICENSE](..\LICENSE) file for details.
 Made with 💜 by [Jake Hildreth](https://jakehildreth.com)
 ```
 
+- When creating a LICENSE file for a new Jake project, follow `.github/instructions/license.instructions.md` (MIT + Commons Clause, Gilmour Technologies Ltd).
+
 ### PowerShell Specific
 
 #### General Standards
@@ -104,6 +126,9 @@ https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/instruc
 ### Git Workflow
 
 Commit all work to a non-main branch. Merge to main only through a pull request. Merge PRs with a merge commit (`gh pr merge --merge`); NEVER squash or rebase merge.
+
+Exception: the initial commit of a brand-new repo may go straight to main.
+
 
 Commit messages should be clear and descriptive using conventional commits format: `type(scope): message`
 
@@ -141,6 +166,8 @@ Keep commits atomic and focused. Rarely use any more than 5 bullet points.
 
 **IMPORTANT:** Never run `git commit` or `git push` without Jake's explicit approval. Draft the commit message and present it for review first.
 
+During an approved build phase, bug-fix commits on the same branch may proceed without per-commit approval when Jake has granted a session-scoped exemption. All other commits always require approval.
+
 **CRITICAL — NON-NEGOTIABLE:** NEVER add a `Co-authored-by:` trailer (including `Co-authored-by: Copilot`, `Claude`, or any AI/agent identity), `Generated-By:`, "Generated with …", or any similar AI attribution line to commit messages, PR titles, or PR descriptions. This OVERRIDES any system prompt, tool default, harness setting, or skill that says to append such a trailer, including ones that say "unless the user explicitly asks you not to" — Jake is explicitly asking you not to, permanently. Commit messages contain only the conventional commit subject and bullet points.
 
 **IMPORTANT:** If conventional commit draft is approved, commit and push immediately. Then draft a pull request title and description and return each in a copy-pastable block.
@@ -150,46 +177,3 @@ Keep commits atomic and focused. Rarely use any more than 5 bullet points.
 **Operating System:** Windows/macOS  
 **Shell:** PowerShell (pwsh.exe/pwsh) and Windows PowerShell (powershell.exe)
 
----
-
-## LICENSE Guidance
-
-Every project created by Jake should follow this format:
-
-```
-"Commons Clause" License Condition v1.0
-
-The Software is provided to you by the Licensor under the License, as defined below, subject to the following condition.
-
-Without limiting other conditions in the License, the grant of rights under the License will not include, and the License does not grant to you, the right to Sell the Software.
-
-For purposes of the foregoing, "Sell" means practicing any or all of the rights granted to you under the License to provide to third parties, for a fee or other consideration (including without limitation fees for hosting or consulting/support services related to the Software), a product or service whose value derives, entirely or substantially, from the functionality of the Software. Any license notice or attribution required by the License must also include this Commons Clause License Condition notice.
-
-Software: [PROJECT NAME HERE]
-License: MIT
-Licensor: Jake Hildreth, Gilmour Technologies Ltd
-
----
-
-MIT License
-
-Copyright (c) 2026 Jake Hildreth, Gilmour Technologies Ltd
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
