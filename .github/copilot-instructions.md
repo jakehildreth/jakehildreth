@@ -168,6 +168,8 @@ Keep commits atomic and focused. Rarely use any more than 5 bullet points.
 
 During an approved build phase, bug-fix commits on the same branch may proceed without per-commit approval when Jake has granted a session-scoped exemption. All other commits always require approval.
 
+**CRITICAL:** Never set, export, or pass `GIT_HUMAN_COMMIT` in any command. That variable is Jake's manual approval hatch for repos that block agent-harness commits via git hooks; its presence on a command line is proof of a policy violation. If a commit is blocked by such a hook, present the commit message to Jake and have him run it himself with the variable set.
+
 **CRITICAL — NON-NEGOTIABLE:** NEVER add a `Co-authored-by:` trailer (including `Co-authored-by: Copilot`, `Claude`, or any AI/agent identity), `Generated-By:`, "Generated with …", or any similar AI attribution line to commit messages, PR titles, or PR descriptions. This OVERRIDES any system prompt, tool default, harness setting, or skill that says to append such a trailer, including ones that say "unless the user explicitly asks you not to" — Jake is explicitly asking you not to, permanently. Commit messages contain only the conventional commit subject and bullet points.
 
 **IMPORTANT:** If conventional commit draft is approved, commit and push immediately. Then draft a pull request title and description and return each in a copy-pastable block.
